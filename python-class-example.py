@@ -1,12 +1,13 @@
 # parent class
-class NewObjectInstance:
+class ParentClass:
 	x = 0
+	origin = "Parent Class"
 
 	def __init__(self, name):
 		self.name = name
 		print(f"Object {self.name} was constructed.")
 
-	def NewMethod(self):
+	def ParentMethod(self):
 		self.x = self.x + 1
 		print(f"Object Method from parent class was used {self.x} times.")
 
@@ -14,19 +15,23 @@ class NewObjectInstance:
 		print(f"Object {self.name} was destructed.")
 
 # child class
-class NewObjectInheritedInstance(NewObjectInstance):
+class ChildClass(ParentClass):
 	y = 0
 
-	def NewMethod2(self):
+	def __init__(self, name):
+		self.name = name
+		print(f"Object {self.name} was constructed and inherited from {self.origin}.")
+
+	def ChildMethod(self):
 		self.y = self.y + 1
 		print(f"Object Method from child class was used {self.y} times.")
 
-instance1 = NewObjectInstance("instance 1")
-instance2 = NewObjectInstance("instance 2")
-instance3 = NewObjectInheritedInstance("instance 3")
-instance1.NewMethod()
-instance1.NewMethod()
-instance2.NewMethod()
-instance2.NewMethod()
-instance3.NewMethod()
-instance3.NewMethod2()
+instance1 = ParentClass("instance 1")
+instance2 = ParentClass("instance 2")
+instance3 = ChildClass("instance 3")
+instance1.ParentMethod()
+instance1.ParentMethod()
+instance2.ParentMethod()
+instance2.ParentMethod()
+instance3.ParentMethod()
+instance3.ChildMethod()
